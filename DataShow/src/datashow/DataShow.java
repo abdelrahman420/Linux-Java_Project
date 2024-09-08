@@ -80,6 +80,7 @@ public class DataShow {
                     robot.delay(10);
                     robot.keyRelease(KeyEvent.VK_RIGHT);
                     robot.delay(1000);
+                    holding = false;
 
                     // Simulate left arrow key press for KEY_PREVIOUS
                 } else if (line.contains("KEY_PREVIOUS")) {
@@ -87,6 +88,7 @@ public class DataShow {
                     robot.delay(10);
                     robot.keyRelease(KeyEvent.VK_LEFT);
                     Thread.sleep(500);
+                    holding = false;
 
                     // Simulate mouse left-click for KEY_ENTER
                 } else if (line.contains("KEY_ENTER")) {
@@ -94,6 +96,7 @@ public class DataShow {
                     robot.delay(5);
                     robot.mouseRelease(InputEvent.BUTTON1_MASK);
                     Thread.sleep(500);
+                    holding = false;
 
                     // **Newly Added Condition: Capture KEY_5 and Take Screenshot**
                 } else if (line.contains("KEY_5")) {
@@ -113,6 +116,8 @@ public class DataShow {
                         System.out.println("Failed to save screenshot: " + e.getMessage());
                         e.printStackTrace();
                     }
+                    holding = false;
+
                 } else if (line.contains("KEY_0")) {
                     System.out.println("KEY_0 was pressed! Taking screenshot...");
                     if (!presenting) {
@@ -128,13 +133,18 @@ public class DataShow {
                         Thread.sleep(500);
                         presenting = false;
                     }
+                    holding = false;
 
                 } else if (line.contains("KEY_3")) {
-                    robot.mouseWheel((-10));
+                    robot.mouseWheel((-5));
 //                    robot.delay(5);
+                    holding = false;
+
                 } else if (line.contains("KEY_6")) {
-                    robot.mouseWheel((10));
+                    robot.mouseWheel((5));
 //                    robot.delay(5);
+                    holding = false;
+
                 } else if (line.contains("KEY_8")) {
                     if (!holding) {
                         robot.mousePress(InputEvent.BUTTON1_MASK);
@@ -151,26 +161,36 @@ public class DataShow {
                     robot.delay(10);
                     robot.keyRelease(KeyEvent.VK_1);
                     robot.delay(1000);
+                    holding = false;
+
                 } else if (line.contains("KEY_2")) {
                     robot.keyPress(KeyEvent.VK_2);
                     robot.delay(10);
                     robot.keyRelease(KeyEvent.VK_2);
                     robot.delay(1000);
+                    holding = false;
+
                 } else if (line.contains("KEY_4")) {
                     robot.keyPress(KeyEvent.VK_4);
                     robot.delay(10);
                     robot.keyRelease(KeyEvent.VK_4);
                     robot.delay(1000);
+                    holding = false;
+
                 } else if (line.contains("KEY_7")) {
                     robot.keyPress(KeyEvent.VK_7);
                     robot.delay(10);
                     robot.keyRelease(KeyEvent.VK_7);
                     robot.delay(1000);
+                    holding = false;
+
                 } else if (line.contains("KEY_9")) {
                     robot.keyPress(KeyEvent.VK_9);
                     robot.delay(10);
                     robot.keyRelease(KeyEvent.VK_9);
                     robot.delay(100);
+                    holding = false;
+
                 }
 
             }
