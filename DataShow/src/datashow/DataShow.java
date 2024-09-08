@@ -170,7 +170,7 @@ public class DataShow {
                     robot.keyPress(KeyEvent.VK_9);
                     robot.delay(10);
                     robot.keyRelease(KeyEvent.VK_9);
-                    robot.delay(1000);
+                    robot.delay(100);
                 }
 
             }
