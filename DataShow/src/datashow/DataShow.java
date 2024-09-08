@@ -13,15 +13,18 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
+import javax.swing.*;
 
 public class DataShow {
 
     public static void main(String[] args) {
+
         Robot robot;
         Point currentPosition;
         int currentX, currentY;
         boolean presenting = false;
         boolean holding = false;
+        String LastCommand = "";
 
         try {
             // Run the 'irw' command
@@ -32,74 +35,70 @@ public class DataShow {
             String line;
             robot = new Robot();
 
-            System.out.println("Listening for IR key presses...");
+            System.out.println("Listening for IR key 44...");
 
             // Read and print each line (decoded key presses)
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);  // Output the decoded key press information
+                if (!line.equals(LastCommand)) {
+                    LastCommand = line;
+                    System.out.println(line);  // Output the decoded key press information
+                    if (line.contains("KEY_RIGHT")) {
+                        for (int i = 0; i < 30; i++) {
+                            currentPosition = MouseInfo.getPointerInfo().getLocation();
+                            currentX = (int) currentPosition.getX();
+                            currentY = (int) currentPosition.getY();
+                            robot.mouseMove(currentX + 1, currentY);
+                        }
 
-                // Mouse movement for KEY_RIGHT
-                if (line.contains("KEY_RIGHT")) {
-                    for (int i = 0; i < 10; i++) {
-                        currentPosition = MouseInfo.getPointerInfo().getLocation();
-                        currentX = (int) currentPosition.getX();
-                        currentY = (int) currentPosition.getY();
-                        robot.mouseMove(currentX + 1, currentY);
+                        // Mouse movement for KEY_LEFT
+                    } else if (line.contains("KEY_LEFT")) {
+                        for (int i = 0; i < 30; i++) {
+                            currentPosition = MouseInfo.getPointerInfo().getLocation();
+                            currentX = (int) currentPosition.getX();
+                            currentY = (int) currentPosition.getY();
+                            robot.mouseMove(currentX - 1, currentY);
+                        }
+
+                        // Mouse movement for KEY_UP
+                    } else if (line.contains("KEY_UP")) {
+                        for (int i = 0; i < 30; i++) {
+                            currentPosition = MouseInfo.getPointerInfo().getLocation();
+                            currentX = (int) currentPosition.getX();
+                            currentY = (int) currentPosition.getY();
+                            robot.mouseMove(currentX, currentY - 1);
+                        }
+
+                        // Mouse movement for KEY_DOWN
+                    } else if (line.contains("KEY_DOWN")) {
+                        for (int i = 0; i < 30; i++) {
+                            currentPosition = MouseInfo.getPointerInfo().getLocation();
+                            currentX = (int) currentPosition.getX();
+                            currentY = (int) currentPosition.getY();
+                            robot.mouseMove(currentX, currentY + 1);
+                        }
+                    } else if (line.contains("00 KEY_NEXT")) {
+                        robot.keyPress(KeyEvent.VK_RIGHT);
+                        robot.delay(10);
+                        robot.keyRelease(KeyEvent.VK_RIGHT);
+                        holding = false;
+
                     }
-
-                    // Mouse movement for KEY_LEFT
-                } else if (line.contains("KEY_LEFT")) {
-                    for (int i = 0; i < 10; i++) {
-                        currentPosition = MouseInfo.getPointerInfo().getLocation();
-                        currentX = (int) currentPosition.getX();
-                        currentY = (int) currentPosition.getY();
-                        robot.mouseMove(currentX - 1, currentY);
-                    }
-
-                    // Mouse movement for KEY_UP
-                } else if (line.contains("KEY_UP")) {
-                    for (int i = 0; i < 10; i++) {
-                        currentPosition = MouseInfo.getPointerInfo().getLocation();
-                        currentX = (int) currentPosition.getX();
-                        currentY = (int) currentPosition.getY();
-                        robot.mouseMove(currentX, currentY - 1);
-                    }
-
-                    // Mouse movement for KEY_DOWN
-                } else if (line.contains("KEY_DOWN")) {
-                    for (int i = 0; i < 10; i++) {
-                        currentPosition = MouseInfo.getPointerInfo().getLocation();
-                        currentX = (int) currentPosition.getX();
-                        currentY = (int) currentPosition.getY();
-                        robot.mouseMove(currentX, currentY + 1);
-                    }
-
-                    // Simulate right arrow key press for KEY_NEXT
-                } else if (line.contains("KEY_NEXT")) {
-                    robot.keyPress(KeyEvent.VK_RIGHT);
-                    robot.delay(10);
-                    robot.keyRelease(KeyEvent.VK_RIGHT);
-                    robot.delay(1000);
-                    holding = false;
-
                     // Simulate left arrow key press for KEY_PREVIOUS
-                } else if (line.contains("KEY_PREVIOUS")) {
+                } else if (line.contains("00 KEY_PREVIOUS")) {
                     robot.keyPress(KeyEvent.VK_LEFT);
                     robot.delay(10);
                     robot.keyRelease(KeyEvent.VK_LEFT);
-                    Thread.sleep(500);
                     holding = false;
 
                     // Simulate mouse left-click for KEY_ENTER
-                } else if (line.contains("KEY_ENTER")) {
+                } else if (line.contains("00 KEY_ENTER")) {
                     robot.mousePress(InputEvent.BUTTON1_MASK);
                     robot.delay(5);
                     robot.mouseRelease(InputEvent.BUTTON1_MASK);
-                    Thread.sleep(500);
                     holding = false;
 
                     // **Newly Added Condition: Capture KEY_5 and Take Screenshot**
-                } else if (line.contains("KEY_5")) {
+                } else if (line.contains("00 KEY_5")) {
                     System.out.println("KEY_5 was pressed! Taking screenshot...");
 
                     // Get the screen dimensions for the capture
@@ -110,7 +109,7 @@ public class DataShow {
 
                     // Save the screenshot to a file
                     try {
-                        ImageIO.write(capture, "png", new File("~/screenshot.png"));
+                        ImageIO.write(capture, "png", new File("/home/root/screenshot.png"));
                         System.out.println("Screenshot saved as screenshot.png");
                     } catch (IOException e) {
                         System.out.println("Failed to save screenshot: " + e.getMessage());
@@ -118,7 +117,7 @@ public class DataShow {
                     }
                     holding = false;
 
-                } else if (line.contains("KEY_0")) {
+                } else if (line.contains("00 KEY_0")) {
                     System.out.println("KEY_0 was pressed! Taking screenshot...");
                     if (!presenting) {
                         robot.keyPress(KeyEvent.VK_F5);
@@ -135,20 +134,19 @@ public class DataShow {
                     }
                     holding = false;
 
-                } else if (line.contains("KEY_3")) {
+                } else if (line.contains("00 KEY_3")) {
                     robot.mouseWheel((-5));
-//                    robot.delay(5);
-                    holding = false;
+                    robot.delay(1000);
 
-                } else if (line.contains("KEY_6")) {
+                } else if (line.contains("00 KEY_6")) {
                     robot.mouseWheel((5));
-//                    robot.delay(5);
-                    holding = false;
+                    robot.delay(1000);
 
-                } else if (line.contains("KEY_8")) {
+                } else if (line.contains("00 KEY_8")) {
                     if (!holding) {
                         robot.mousePress(InputEvent.BUTTON1_MASK);
                         robot.delay(5);
+
                         holding = true;
 
                     } else {
@@ -156,46 +154,47 @@ public class DataShow {
                         robot.delay(5);
                         holding = false;
                     }
-                } else if (line.contains("KEY_1")) {
+                    robot.delay(1000);
+
+                } else if (line.contains("00 KEY_1")) {
                     robot.keyPress(KeyEvent.VK_1);
                     robot.delay(10);
                     robot.keyRelease(KeyEvent.VK_1);
-                    robot.delay(1000);
                     holding = false;
 
-                } else if (line.contains("KEY_2")) {
+                } else if (line.contains("00 KEY_2")) {
                     robot.keyPress(KeyEvent.VK_2);
                     robot.delay(10);
                     robot.keyRelease(KeyEvent.VK_2);
-                    robot.delay(1000);
+
                     holding = false;
 
-                } else if (line.contains("KEY_4")) {
+                } else if (line.contains("00 KEY_4")) {
                     robot.keyPress(KeyEvent.VK_4);
                     robot.delay(10);
                     robot.keyRelease(KeyEvent.VK_4);
-                    robot.delay(1000);
                     holding = false;
 
-                } else if (line.contains("KEY_7")) {
+                } else if (line.contains("00 KEY_7")) {
                     robot.keyPress(KeyEvent.VK_7);
                     robot.delay(10);
                     robot.keyRelease(KeyEvent.VK_7);
-                    robot.delay(1000);
                     holding = false;
 
-                } else if (line.contains("KEY_9")) {
+                } else if (line.contains("00 KEY_9")) {
                     robot.keyPress(KeyEvent.VK_9);
                     robot.delay(10);
                     robot.keyRelease(KeyEvent.VK_9);
-                    robot.delay(100);
+
                     holding = false;
-
                 }
-
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
+//                Thread.sleep(3000);
+
+    }
+}
+catch (Exception e) {
+            e.printStackTrace();
     }
 }
