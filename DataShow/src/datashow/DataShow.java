@@ -21,6 +21,8 @@ public class DataShow {
         Point currentPosition;
         int currentX, currentY;
         boolean presenting = false;
+        boolean holding = false;
+
         try {
             // Run the 'irw' command
             Process process = new ProcessBuilder("irw").start();
@@ -113,33 +115,67 @@ public class DataShow {
                     }
                 } else if (line.contains("KEY_0")) {
                     System.out.println("KEY_0 was pressed! Taking screenshot...");
-                    if (presenting) {
+                    if (!presenting) {
                         robot.keyPress(KeyEvent.VK_F5);
                         robot.delay(10);
                         robot.keyRelease(KeyEvent.VK_F5);
                         Thread.sleep(500);
+                        presenting = true;
                     } else {
                         robot.keyPress(KeyEvent.VK_ESCAPE);
                         robot.delay(10);
                         robot.keyRelease(KeyEvent.VK_ESCAPE);
                         Thread.sleep(500);
+                        presenting = false;
                     }
 
                 } else if (line.contains("KEY_3")) {
                     robot.mouseWheel((-10));
 //                    robot.delay(5);
-                }
-                else if (line.contains("KEY_7")) {
+                } else if (line.contains("KEY_6")) {
                     robot.mouseWheel((10));
 //                    robot.delay(5);
+                } else if (line.contains("KEY_8")) {
+                    if (!holding) {
+                        robot.mousePress(InputEvent.BUTTON1_MASK);
+                        robot.delay(5);
+                        holding = true;
+
+                    } else {
+                        robot.mouseRelease(InputEvent.BUTTON1_MASK);
+                        robot.delay(5);
+                        holding = false;
+                    }
+                } else if (line.contains("KEY_1")) {
+                    robot.keyPress(KeyEvent.VK_RIGHT);
+                    robot.delay(10);
+                    robot.keyRelease(KeyEvent.VK_RIGHT);
+                    robot.delay(1000);
+                } else if (line.contains("KEY_2")) {
+                    robot.keyPress(KeyEvent.VK_RIGHT);
+                    robot.delay(10);
+                    robot.keyRelease(KeyEvent.VK_RIGHT);
+                    robot.delay(1000);
+                } else if (line.contains("KEY_4")) {
+                    robot.keyPress(KeyEvent.VK_RIGHT);
+                    robot.delay(10);
+                    robot.keyRelease(KeyEvent.VK_RIGHT);
+                    robot.delay(1000);
+                } else if (line.contains("KEY_7")) {
+                    robot.keyPress(KeyEvent.VK_RIGHT);
+                    robot.delay(10);
+                    robot.keyRelease(KeyEvent.VK_RIGHT);
+                    robot.delay(1000);
+                } else if (line.contains("KEY_9")) {
+                    robot.keyPress(KeyEvent.VK_RIGHT);
+                    robot.delay(10);
+                    robot.keyRelease(KeyEvent.VK_RIGHT);
+                    robot.delay(1000);
                 }
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
-    catch (Exception e
-
-    
-        ) {
-            e.printStackTrace();
-    }
-}
 }
