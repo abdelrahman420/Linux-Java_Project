@@ -129,7 +129,7 @@ public class DataShow {
                     robot.mouseWheel((-10));
 //                    robot.delay(5);
                 }
-                else if (line.contains("KEY_6")) {
+                else if (line.contains("KEY_7")) {
                     robot.mouseWheel((10));
 //                    robot.delay(5);
                 }
