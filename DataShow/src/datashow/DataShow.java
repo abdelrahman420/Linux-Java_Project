@@ -147,29 +147,29 @@ public class DataShow {
                         holding = false;
                     }
                 } else if (line.contains("KEY_1")) {
-                    robot.keyPress(KeyEvent.VK_RIGHT);
+                    robot.keyPress(KeyEvent.VK_1);
                     robot.delay(10);
-                    robot.keyRelease(KeyEvent.VK_RIGHT);
+                    robot.keyRelease(KeyEvent.VK_1);
                     robot.delay(1000);
                 } else if (line.contains("KEY_2")) {
-                    robot.keyPress(KeyEvent.VK_RIGHT);
+                    robot.keyPress(KeyEvent.VK_2);
                     robot.delay(10);
-                    robot.keyRelease(KeyEvent.VK_RIGHT);
+                    robot.keyRelease(KeyEvent.VK_2);
                     robot.delay(1000);
                 } else if (line.contains("KEY_4")) {
-                    robot.keyPress(KeyEvent.VK_RIGHT);
+                    robot.keyPress(KeyEvent.VK_4);
                     robot.delay(10);
-                    robot.keyRelease(KeyEvent.VK_RIGHT);
+                    robot.keyRelease(KeyEvent.VK_4);
                     robot.delay(1000);
                 } else if (line.contains("KEY_7")) {
-                    robot.keyPress(KeyEvent.VK_RIGHT);
+                    robot.keyPress(KeyEvent.VK_7);
                     robot.delay(10);
-                    robot.keyRelease(KeyEvent.VK_RIGHT);
+                    robot.keyRelease(KeyEvent.VK_7);
                     robot.delay(1000);
                 } else if (line.contains("KEY_9")) {
-                    robot.keyPress(KeyEvent.VK_RIGHT);
+                    robot.keyPress(KeyEvent.VK_9);
                     robot.delay(10);
-                    robot.keyRelease(KeyEvent.VK_RIGHT);
+                    robot.keyRelease(KeyEvent.VK_9);
                     robot.delay(1000);
                 }
 
