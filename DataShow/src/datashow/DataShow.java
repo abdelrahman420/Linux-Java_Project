@@ -9,7 +9,7 @@ public class DataShow {
 
     public static void main(String[] args) {
         Configuration config = new Configuration();
-        config.loadFromFile("/home/configuration/sudoku.txt");  //load key from file
+        config.loadFromFile("./remoteConfig.txt");  //load key from file
 
         String LastCommand = "";
 
