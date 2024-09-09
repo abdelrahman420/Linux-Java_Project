@@ -196,7 +196,7 @@ public class DataShow {
 
     public static void main(String[] args) {
         Configuration config = new Configuration();
-        config.loadFromFile("remoteConfig.txt");  //load key from file
+        config.loadFromFile("./remoteConfig.txt");  //load key from file
         String LastCommand = "";
 
         try {
