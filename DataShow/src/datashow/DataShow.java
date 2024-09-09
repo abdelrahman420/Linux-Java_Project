@@ -76,7 +76,20 @@ public class DataShow {
                             currentY = (int) currentPosition.getY();
                             robot.mouseMove(currentX, currentY + 1);
                         }
-                    } else if (line.contains("00 KEY_NEXT")) {
+                    }  else if (line.contains("00 KEY_8")) {
+                        robot.keyPress(KeyEvent.VK_UP);
+                        robot.delay(10);
+                        robot.keyRelease(KeyEvent.VK_UP);
+                        holding = false;
+
+                    } else if (line.contains("00 KEY_0")) {
+                        robot.keyPress(KeyEvent.VK_DOWN);
+                        robot.delay(10);
+                        robot.keyRelease(KeyEvent.VK_DOWN);
+                        holding = false;
+
+                    }
+                    else if (line.contains("00 KEY_NEXT")) {
                         robot.keyPress(KeyEvent.VK_RIGHT);
                         robot.delay(10);
                         robot.keyRelease(KeyEvent.VK_RIGHT);
@@ -84,117 +97,108 @@ public class DataShow {
 
                     }
                     // Simulate left arrow key press for KEY_PREVIOUS
-                } else if (line.contains("00 KEY_PREVIOUS")) {
-                    robot.keyPress(KeyEvent.VK_LEFT);
-                    robot.delay(10);
-                    robot.keyRelease(KeyEvent.VK_LEFT);
-                    holding = false;
-
-                    // Simulate mouse left-click for KEY_ENTER
-                } else if (line.contains("00 KEY_ENTER")) {
-                    robot.mousePress(InputEvent.BUTTON1_MASK);
-                    robot.delay(5);
-                    robot.mouseRelease(InputEvent.BUTTON1_MASK);
-                    holding = false;
-
-                    // **Newly Added Condition: Capture KEY_5 and Take Screenshot**
-                } else if (line.contains("00 KEY_5")) {
-                    System.out.println("KEY_5 was pressed! Taking screenshot...");
-
-                    // Get the screen dimensions for the capture
-                    Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
-
-                    // Capture the screen
-                    BufferedImage capture = robot.createScreenCapture(screenRect);
-
-                    // Save the screenshot to a file
-                    try {
-                        ImageIO.write(capture, "png", new File("/home/root/screenshot.png"));
-                        System.out.println("Screenshot saved as screenshot.png");
-                    } catch (IOException e) {
-                        System.out.println("Failed to save screenshot: " + e.getMessage());
-                        e.printStackTrace();
-                    }
-                    holding = false;
-
-                } else if (line.contains("00 KEY_0")) {
-                    System.out.println("KEY_0 was pressed! Taking screenshot...");
-                    if (!presenting) {
-                        robot.keyPress(KeyEvent.VK_F5);
+                    else if (line.contains("00 KEY_PREVIOUS")) {
+                        robot.keyPress(KeyEvent.VK_LEFT);
                         robot.delay(10);
-                        robot.keyRelease(KeyEvent.VK_F5);
-                        Thread.sleep(500);
-                        presenting = true;
-                    } else {
-                        robot.keyPress(KeyEvent.VK_ESCAPE);
-                        robot.delay(10);
-                        robot.keyRelease(KeyEvent.VK_ESCAPE);
-                        Thread.sleep(500);
-                        presenting = false;
-                    }
-                    holding = false;
+                        robot.keyRelease(KeyEvent.VK_LEFT);
+                        holding = false;
 
-                } else if (line.contains("00 KEY_3")) {
-                    robot.mouseWheel((-5));
-                    robot.delay(1000);
-
-                } else if (line.contains("00 KEY_6")) {
-                    robot.mouseWheel((5));
-                    robot.delay(1000);
-
-                } else if (line.contains("00 KEY_8")) {
-                    if (!holding) {
+                        // Simulate mouse left-click for KEY_ENTER
+                    } else if (line.contains("00 KEY_ENTER")) {
                         robot.mousePress(InputEvent.BUTTON1_MASK);
                         robot.delay(5);
-
-                        holding = true;
-
-                    } else {
                         robot.mouseRelease(InputEvent.BUTTON1_MASK);
-                        robot.delay(5);
+                        holding = false;
+
+                        // **Newly Added Condition: Capture KEY_5 and Take Screenshot**
+                    } else if (line.contains("00 KEY_2")) {
+                        System.out.println("KEY_2 was pressed! Taking screenshot...");
+
+                        // Get the screen dimensions for the capture
+                        Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+
+                        // Capture the screen
+                        BufferedImage capture = robot.createScreenCapture(screenRect);
+
+                        // Save the screenshot to a file
+                        try {
+                            ImageIO.write(capture, "png", new File("/home/root/screenshot.png"));
+                            System.out.println("Screenshot saved as screenshot.png");
+                        } catch (IOException e) {
+                            System.out.println("Failed to save screenshot: " + e.getMessage());
+                            e.printStackTrace();
+                        }
+                        holding = false;
+
+                    } else if (line.contains("00 KEY_1")) {
+                        if (!presenting) {
+                            robot.keyPress(KeyEvent.VK_F5);
+                            robot.delay(10);
+                            robot.keyRelease(KeyEvent.VK_F5);
+                            Thread.sleep(500);
+                            presenting = true;
+                        } else {
+                            robot.keyPress(KeyEvent.VK_ESCAPE);
+                            robot.delay(10);
+                            robot.keyRelease(KeyEvent.VK_ESCAPE);
+                            Thread.sleep(500);
+                            presenting = false;
+                        }
+                        holding = false;
+
+                    } else if (line.contains("00 KEY_3")) {
+                        robot.mouseWheel((-5));
+                        robot.delay(1000);
+
+                    } else if (line.contains("00 KEY_6")) {
+                        robot.mouseWheel((5));
+                        robot.delay(1000);
+
+                    } else if (line.contains("00 KEY_5")) {
+                        if (!holding) {
+                            robot.mousePress(InputEvent.BUTTON1_MASK);
+                            robot.delay(5);
+
+                            holding = true;
+
+                        } else {
+                            robot.mouseRelease(InputEvent.BUTTON1_MASK);
+                            robot.delay(5);
+                            holding = false;
+                        }
+
+                    } else if (line.contains("00 KEY_2")) {
+                        robot.keyPress(KeyEvent.VK_2);
+                        robot.delay(10);
+                        robot.keyRelease(KeyEvent.VK_2);
+
+                        holding = false;
+
+                    } else if (line.contains("00 KEY_4")) {
+                        robot.keyPress(KeyEvent.VK_4);
+                        robot.delay(10);
+                        robot.keyRelease(KeyEvent.VK_4);
+                        holding = false;
+
+                    } else if (line.contains("00 KEY_7")) {
+                        robot.keyPress(KeyEvent.VK_7);
+                        robot.delay(10);
+                        robot.keyRelease(KeyEvent.VK_7);
+                        holding = false;
+
+                    } else if (line.contains("00 KEY_9")) {
+                        robot.keyPress(KeyEvent.VK_9);
+                        robot.delay(10);
+                        robot.keyRelease(KeyEvent.VK_9);
+
                         holding = false;
                     }
-                    robot.delay(1000);
-
-                } else if (line.contains("00 KEY_1")) {
-                    robot.keyPress(KeyEvent.VK_1);
-                    robot.delay(10);
-                    robot.keyRelease(KeyEvent.VK_1);
-                    holding = false;
-
-                } else if (line.contains("00 KEY_2")) {
-                    robot.keyPress(KeyEvent.VK_2);
-                    robot.delay(10);
-                    robot.keyRelease(KeyEvent.VK_2);
-
-                    holding = false;
-
-                } else if (line.contains("00 KEY_4")) {
-                    robot.keyPress(KeyEvent.VK_4);
-                    robot.delay(10);
-                    robot.keyRelease(KeyEvent.VK_4);
-                    holding = false;
-
-                } else if (line.contains("00 KEY_7")) {
-                    robot.keyPress(KeyEvent.VK_7);
-                    robot.delay(10);
-                    robot.keyRelease(KeyEvent.VK_7);
-                    holding = false;
-
-                } else if (line.contains("00 KEY_9")) {
-                    robot.keyPress(KeyEvent.VK_9);
-                    robot.delay(10);
-                    robot.keyRelease(KeyEvent.VK_9);
-
-                    holding = false;
                 }
             }
-        }
 //                Thread.sleep(3000);
 
-    }
-}
-catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
+        }
     }
 }
