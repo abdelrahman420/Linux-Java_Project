@@ -1,6 +1,6 @@
-package datashow;
+//package datashow;
 
-import datashow.Configuration;
+//import datashow.Configuration;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.awt.AWTException;
@@ -162,7 +162,35 @@ public class DataShow {
                         holding = false;
                     }
                     break;
-
+                    
+                case "PRINT0":
+                    robot.keyPress(KeyEvent.VK_0);
+                    robot.delay(10);
+                    robot.keyRelease(KeyEvent.VK_0);
+                    holding = false;
+                    break;
+                    
+                case "PRINT1":
+                    robot.keyPress(KeyEvent.VK_1);
+                    robot.delay(10);
+                    robot.keyRelease(KeyEvent.VK_1);
+                    holding = false;
+                    break;
+                    
+                case "PRINT2":
+                    robot.keyPress(KeyEvent.VK_2);
+                    robot.delay(10);
+                    robot.keyRelease(KeyEvent.VK_2);
+                    holding = false;
+                    break;
+                    
+                case "PRINT3":
+                    robot.keyPress(KeyEvent.VK_3);
+                    robot.delay(10);
+                    robot.keyRelease(KeyEvent.VK_3);
+                    holding = false;
+                    break;
+                    
                 case "PRINT4":
                     robot.keyPress(KeyEvent.VK_4);
                     robot.delay(10);
@@ -170,21 +198,49 @@ public class DataShow {
                     holding = false;
                     break;
 
+                case "PRINT5":
+
+                    robot.keyPress(KeyEvent.VK_5);
+                    robot.delay(10);
+                    robot.keyRelease(KeyEvent.VK_5);
+                    holding = false;
+                    break;
+                case "PRINT6":
+
+                    robot.keyPress(KeyEvent.VK_6);
+                    robot.delay(10);
+                    robot.keyRelease(KeyEvent.VK_6);
+                    holding = false;
+                    break;
+                case "PRINT7":
+
+                    robot.keyPress(KeyEvent.VK_7);
+                    robot.delay(10);
+                    robot.keyRelease(KeyEvent.VK_7);
+                    holding = false;
+                    break;
+                case "PRINT8":
+
+                    robot.keyPress(KeyEvent.VK_8);
+                    robot.delay(10);
+                    robot.keyRelease(KeyEvent.VK_8);
+                    holding = false;
+                    break;
+                    
+                case "PRINT9":
+                    robot.keyPress(KeyEvent.VK_9);
+                    robot.delay(10);
+                    robot.keyRelease(KeyEvent.VK_9);
+                    holding = false;
+                    break;
+                    
                 case "CLOSE":
                     robot.keyPress(KeyEvent.VK_7);
                     robot.delay(10);
                     robot.keyRelease(KeyEvent.VK_7);
                     holding = false;
                     break;
-
-                case "PRINT9":
-
-                    robot.keyPress(KeyEvent.VK_9);
-                    robot.delay(10);
-                    robot.keyRelease(KeyEvent.VK_9);
-                    holding = false;
-                    break;
-
+                    
                 default:
                     break;
             }
@@ -196,7 +252,9 @@ public class DataShow {
 
     public static void main(String[] args) {
         Configuration config = new Configuration();
-        config.loadFromFile("./remoteConfig.txt");  //load key from file
+//        config.loadFromFile("/home/configuration/remoteConfig.txt");  //load key from file
+        config.loadFromFile("/home/configuration/sudoku.txt");  //load key from file
+
         String LastCommand = "";
 
         try {
@@ -277,6 +335,7 @@ public class DataShow {
                     }
 
                     act(action);
+                    action = "";
 
                 }
             }
