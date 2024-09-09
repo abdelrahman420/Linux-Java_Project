@@ -49,7 +49,7 @@ public class DataShow {
                     }
                     break;
 
-                case "KEY_UP":
+                case "MOUSE_UP":
                     for (int i = 0; i < 30; i++) {
                         currentPosition = MouseInfo.getPointerInfo().getLocation();
                         currentX = (int) currentPosition.getX();
@@ -58,7 +58,7 @@ public class DataShow {
                     }
                     break;
 
-                case "KEY_DOWN":
+                case "MOUSE_DOWN":
                     for (int i = 0; i < 30; i++) {
                         currentPosition = MouseInfo.getPointerInfo().getLocation();
                         currentX = (int) currentPosition.getX();
@@ -67,42 +67,42 @@ public class DataShow {
                     }
                     break;
 
-                case "KEY_8":
+                case "ARROW_UP":
                     robot.keyPress(KeyEvent.VK_UP);
                     robot.delay(10);
                     robot.keyRelease(KeyEvent.VK_UP);
                     holding = false;
                     break;
 
-                case "KEY_0":
+                case "ARROW_DOWN":
                     robot.keyPress(KeyEvent.VK_DOWN);
                     robot.delay(10);
                     robot.keyRelease(KeyEvent.VK_DOWN);
                     holding = false;
                     break;
 
-                case "KEY_NEXT":
+                case "ARROW_RIGHT":
                     robot.keyPress(KeyEvent.VK_RIGHT);
                     robot.delay(10);
                     robot.keyRelease(KeyEvent.VK_RIGHT);
                     holding = false;
                     break;
 
-                case "KEY_PREVIOUS":
+                case "ARROW_LEFT":
                     robot.keyPress(KeyEvent.VK_LEFT);
                     robot.delay(10);
                     robot.keyRelease(KeyEvent.VK_LEFT);
                     holding = false;
                     break;
 
-                case "KEY_ENTER":
+                case "LEFT_CLICK":
                     robot.mousePress(InputEvent.BUTTON1_MASK);
                     robot.delay(5);
                     robot.mouseRelease(InputEvent.BUTTON1_MASK);
                     holding = false;
                     break;
 
-                case "KEY_2":
+                case "PRTSC":
                     System.out.println("KEY_2 was pressed! Taking screenshot...");
 
                     // Get the screen dimensions for the capture
@@ -122,7 +122,7 @@ public class DataShow {
                     holding = false;
                     break;
 
-                case "KEY_1":
+                case "TOGGLE_PRESENTATION":
                     if (!presenting) {
                         robot.keyPress(KeyEvent.VK_F5);
                         robot.delay(10);
@@ -139,17 +139,17 @@ public class DataShow {
                     holding = false;
                     break;
 
-                case "KEY_3":
+                case "SCROLL_UP":
                     robot.mouseWheel((-5));
                     robot.delay(1000);
                     break;
 
-                case "KEY_6":
+                case "SCROLL_DOWN":
                     robot.mouseWheel((5));
                     robot.delay(1000);
                     break;
 
-                case "KEY_5":
+                case "TOGGLE_HOLD":
                     if (!holding) {
                         robot.mousePress(InputEvent.BUTTON1_MASK);
                         robot.delay(5);
@@ -163,21 +163,21 @@ public class DataShow {
                     }
                     break;
 
-                case "KEY_4":
+                case "PRINT4":
                     robot.keyPress(KeyEvent.VK_4);
                     robot.delay(10);
                     robot.keyRelease(KeyEvent.VK_4);
                     holding = false;
                     break;
 
-                case "KEY_7":
+                case "CLOSE":
                     robot.keyPress(KeyEvent.VK_7);
                     robot.delay(10);
                     robot.keyRelease(KeyEvent.VK_7);
                     holding = false;
                     break;
 
-                case "KEY_9":
+                case "PRINT9":
 
                     robot.keyPress(KeyEvent.VK_9);
                     robot.delay(10);
