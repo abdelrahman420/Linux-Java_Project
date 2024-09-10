@@ -175,11 +175,6 @@ public class Configuration {
                             setKeyValue(key, press_9);
                             break;
 
-                        case "CLOSE":
-                            Action close = new Close();
-                            setKeyValue(key, close);
-                            break;
-
                         default:
                             break;
                     }
