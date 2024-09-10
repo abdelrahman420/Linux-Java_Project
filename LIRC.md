@@ -23,7 +23,7 @@
 3. **Building the Image with LIRC Support:**
    - Once you have configured LIRC support in `local.conf`, proceed to build the Yocto image:
      ```bash
-     bitbake presenter-image
+     bitbake datashow-image
      ```
    - Ensure all dependencies are correctly set up and that the image is built without errors.
 
