@@ -62,10 +62,7 @@ To use the IR remote for controlling the data show, we integrated `LIRC` (Linux 
 
 1. **Identify the LIRC Package Location**: Found the `lirc` recipe in `meta-openembedded/meta-oe/dynamic-layers/meta-python/recipes-connectivity/lirc`.
 2. **Enable LIRC in the Yocto Image**: Added `lirc` to `IMAGE_INSTALL` and configured necessary dependencies.
-3. **Resolve Device Issues**: Faced issues with missing `lirc` devices under `/dev`. To solve this, we included `opkg` and other required dependencies:
-   ```bash
-   IMAGE_INSTALL:append = " opkg"
-   ```
+
 
 After resolving this, we were able to see `lirc0` and `lirc1` under `/dev`.
 
@@ -114,19 +111,31 @@ Throughout the project, we faced multiple challenges such as missing devices, `i
 Below is the hierarchy of the project files and directories:
 
 ```
-IR_Presenter_Project/
-├── conf
-│   ├── distro
-│   │   └── ir-presenter.conf
-│   └── layer.conf
-├── COPYING.MIT
-├── README
-├── recipes-example
-│   └── example
-│       └── example_0.1.bb
-└── recipes-image
-    └── image
-        └── image.bb
+ ── meta-datashow
+    ├── conf
+    │   ├── distro
+    │   │   └── datashow.conf
+    │   └── layer.conf
+    ├── COPYING.MIT
+    ├── README
+    ├── recipes-image
+    │   └── image
+    │       └── datashow-image.bb
+    ├── recipes-ir
+    │   ├── ir
+    │   │   ├── files
+    │   │   │   ├── config.txt
+    │   │   │   ├── gpio-ir.dtbo
+    │   │   │   ├── lircd.conf
+    │   │   │   └── lirc_options.conf
+    │   │   └── ir_1.0.bb
+    │   ├── lirc
+    │       └── lirc_%.bbappend
+    │   
+    └── recipes-java
+        └── java
+            └── java_1.0.bb
+
 ```
 
 ## Images and Examples
