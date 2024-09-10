@@ -31,9 +31,15 @@ The system includes a component that listens for remote key signals and performs
 - **Loading Configuration:** Reading settings from a configuration file to determine the action mappings.
 - **Signal Listening:** Capturing incoming remote signals and executing the mapped actions.
 
+### "Class Diagram for DataShow Application Architecture"
+
+This title accurately describes the content of the diagram, which showcases the structure and relationships between the different classes in Java application (`DataShow`, `Configuration`, `Action`, and its subclasses like `ArrowRight`, `ArrowLeft`, `TogglePresentation`, and `MouseRight`). The title makes it clear to the reader that this image provides an overview of the application's design. 
+
+![diagram](../images/java.png)
+
 ### Configuration File Format
 
-The configuration file (`remoteConfig.txt`) should contain lines formatted as:
+The configuration file (`sudoku.txt`) should contain lines formatted as:
 ```
 KEY: ACTION
 ```
@@ -44,7 +50,7 @@ Where `KEY` is the remote key signal and `ACTION` is the corresponding action cl
 The `DataShow` class listens for remote key signals and performs the corresponding actions based on the configuration.
 
 **Key Steps:**
-1. Loads the configuration from `remoteConfig.txt`.
+1. Loads the configuration from `sudoku.txt`.
 2. Listens for IR key signals using the `irw` command.
 3. Maps received signals to actions and performs them.
 
@@ -72,9 +78,9 @@ The `DataShow` class listens for remote key signals and performs the correspondi
 ## Usage
 
 - **Start the Application**: Execute `java DataShow` to start listening for remote key signals.
-- **Configure Actions**: Edit the `remoteConfig.txt` file to map remote keys to actions. Ensure the file is correctly formatted.
+- **Configure Actions**: Edit the `sudoku.txt` file to map remote keys to actions. Ensure the file is correctly formatted.
 
 ## Troubleshooting
 
-- **No Actions Triggered**: Verify that the `remoteConfig.txt` file is correctly formatted and contains the necessary mappings.
+- **No Actions Triggered**: Verify that the `sudoku.txt` file is correctly formatted and contains the necessary mappings.
 - **IR Signal Not Detected**: Ensure the `irw` tool is correctly capturing signals and that the remote control is functioning properly.
