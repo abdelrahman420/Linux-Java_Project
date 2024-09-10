@@ -8,7 +8,7 @@ PACKAGE_CLASSES ?= "package_rpm opkg"
 # Image Features
 IMAGE_FEATURES += "splash package-management x11-base x11-sato ssh-server-dropbear hwcodecs"
 
-IMAGE_INSTALL:append = " java ir opkg python3 python3-pkg-resources vim"
+IMAGE_INSTALL:append = " java opkg python3 python3-pkg-resources vim"
 
 inherit core-image
 
