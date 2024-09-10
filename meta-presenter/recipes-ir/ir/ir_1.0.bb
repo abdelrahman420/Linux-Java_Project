@@ -22,7 +22,6 @@ LIRC_CONF_PATH = "/etc/lirc/lirc.conf"
 # Path for the overlay file
 OVERLAY_PATH = "/boot/overlays"
 
-BOOT_PATH = "/boot"
 
 # Custom variable to enable infrared (currently not used in the recipe)
 ENABLE_IR = "1"
@@ -35,7 +34,10 @@ FILES_${PN} = "${sysconfdir}/lirc/lircd.conf ${OVERLAY_PATH}/gpio-ir.dtbo"
 
 # SRC_URI defines the location of source files.
 # Include both lircd.conf and gpio-ir.dtbo files
-SRC_URI:append = " file://lircd.conf file://gpio-ir.dtbo ${BOOT_PATH}/config.txt"
+SRC_URI = "file://lircd.conf \
+           file://gpio-ir.dtbo \
+           file://boot/config.txt"
+
 
 # The do_install function defines what happens during the installation phase
 do_install() {
