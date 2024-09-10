@@ -1,3 +1,4 @@
 do_install:append() {
-  rm -rf ${D}${sysconfdir}/lirc/lircd.conf
+    # Remove the lircd.conf file after installation
+    rm -rf ${D}${sysconfdir}/lirc/lircd.conf
 }

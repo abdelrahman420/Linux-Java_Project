@@ -84,3 +84,79 @@ recipes-ir/
     └── lirc_%.bbappend
 ```
 
+
+---
+
+### **LIRC Commands and Utilities**
+
+Once LIRC is installed and configured on your system, you can use the following commands to manage the `lircd` service and test infrared signals.
+
+#### 1. **Starting the `lircd` Service**
+
+After building and installing the image with LIRC support, start the `lircd` (LIRC daemon) to begin receiving infrared signals:
+
+```bash
+# Start the lircd service
+sudo systemctl start lircd
+
+# Check the status of lircd to ensure it's running
+sudo systemctl status lircd
+```
+
+To ensure `lircd` starts automatically on boot, enable the service:
+
+```bash
+# Enable lircd to start on boot
+sudo systemctl enable lircd
+```
+
+#### 2. **Testing Infrared Reception with `mode2`**
+
+You can use the `mode2` utility to test if the system is receiving infrared signals from the remote control:
+
+```bash
+# Run mode2 to check for incoming infrared signals
+sudo mode2 -d /dev/lirc0
+```
+
+If everything is configured correctly, pressing buttons on the remote should show pulse and space values in the terminal, indicating signal reception.
+
+#### 3. **Sending Infrared Signals with `irsend`**
+
+The `irsend` utility can be used to send commands via infrared, which is useful for controlling other devices:
+
+```bash
+# Send a command using irsend
+sudo irsend SEND_ONCE <remote_name> <button_name>
+```
+
+Example:
+
+```bash
+sudo irsend SEND_ONCE my_remote KEY_VOLUMEUP
+```
+
+Ensure that the remote name and button are defined in your `lircd.conf` configuration file.
+
+#### 4. **Recording Remote Control Signals with `irrecord`**
+
+You can use the `irrecord` utility to capture and generate a configuration file (`lircd.conf`) for your remote control:
+
+```bash
+# Start recording the remote control signals
+sudo irrecord -d /dev/lirc0 ~/lircd.conf
+```
+
+Follow the on-screen instructions to press the buttons on your remote, and `irrecord` will generate a custom `lircd.conf` file.
+
+#### 5. **Viewing Remote Control Signals with `irw`**
+
+The `irw` utility allows you to monitor and log which buttons are being pressed on the remote:
+
+```bash
+# Run irw to check the output of the remote control
+irw
+```
+
+This utility will output the button names as defined in your `lircd.conf` file when you press buttons on the remote.
+
