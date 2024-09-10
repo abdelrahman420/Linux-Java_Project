@@ -1,7 +1,10 @@
+package javaapp;
+
 
 import java.awt.Point;
 import java.awt.Robot;
 import java.awt.AWTException;
+import java.awt.Color;
 import java.util.logging.Logger;
 import java.awt.event.KeyEvent;
 import java.awt.event.InputEvent;
@@ -236,6 +239,20 @@ class Print_0 extends Action {
         robot.delay(10);
         robot.keyRelease(KeyEvent.VK_0);
         holding = false;
+    }
+}
+
+
+
+class ChangeSetting extends Action {
+
+    @Override
+    public void perform() {
+        firm1 f1 = new firm1();
+        f1.setLocationRelativeTo(null);
+        f1.getContentPane().setBackground(new Color(161,161,161));
+        f1.setVisible(true); 
+        
     }
 }
 

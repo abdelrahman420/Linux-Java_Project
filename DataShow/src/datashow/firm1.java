@@ -15,12 +15,12 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-class Configuration {
+class ConfigurationChange {
     private static boolean mousePressed = false;
 
     private Map<String, String> keyValues;
 
-    public Configuration() {
+    public ConfigurationChange() {
         keyValues = new LinkedHashMap<>();
     }
 
@@ -39,6 +39,7 @@ class Configuration {
 
     public void writeToFile(String fileName) {
     try (FileWriter fileWriter = new FileWriter(fileName)) {
+        setKeyValue("STATUS", "TRUE");
         for (Map.Entry<String, String> entry : keyValues.entrySet()) {
             // Write each key-value pair in the format "KEY: VALUE"
             fileWriter.write(entry.getKey() + ": " + entry.getValue() + "\n");
@@ -71,8 +72,13 @@ class Configuration {
         int i = 0;
         for (Map.Entry<String, String> entry : keyValues.entrySet()) {
             comboBoxes[i].setSelectedItem(entry.getValue());
-             System.out.println(entry.getValue());
+            System.out.println(entry.getValue());
             i++;
+            
+            if (i == 16)
+            {
+                break;
+            }
         }
     }
 
@@ -94,13 +100,13 @@ public class firm1 extends javax.swing.JFrame {
      * Creates new form firm1
      */
     
-    private Configuration config;
+    private ConfigurationChange config;
     
     private javax.swing.JComboBox<String>[] comboBoxes;
 
     public firm1() {
         
-        config = new Configuration();
+        config = new ConfigurationChange();
         config.loadFromFile("C:\\Users\\minam\\OneDrive\\Documents\\NetBeansProjects\\JavaApp\\src\\javaapp\\remoteConfig.txt");  //load key from file
         
         initComponents();
