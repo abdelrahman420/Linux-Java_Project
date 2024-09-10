@@ -19,6 +19,7 @@ The primary feature of this project is the ability to control presentation slide
 9. [Integrating the Data Show Application](#integrating-the-data-show-application)
 10. [Challenges and Solutions](#challenges-and-solutions)
 11. [Acknowledgements](#acknowledgements)
+12. [Useful References](#usefulreferences)
 
 ## **Project Objective**
 
@@ -186,3 +187,17 @@ Below are some images and examples to help visualize the project setup:
 
 3. **Java Application GUI**:
    ![Java Application GUI](java_app_gui_image.png)
+
+## Useful References
+
+- **Java Polymorphism and Abstract Classes:**
+  - [Oracle Java Documentation on Abstract Classes](https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
+  - [Java Polymorphism Tutorial](https://www.geeksforgeeks.org/polymorphism-in-java/)
+- **Linux Infrared Remote Control (LIRC):**
+  - [Official LIRC Documentation](http://www.lirc.org/)
+- **IR Signals and Tools (`irw`):**
+  - [How to Use LIRC and IR Tools on Linux](https://www.linux-projects.org/uv4l/tutorials/configuring-ir-remote-control/)
+- **Java File Handling:**
+  - [Java File Handling Documentation](https://docs.oracle.com/javase/tutorial/essential/io/file.html)
+- **Command-Line Tools for Reading IR Signals:**
+  - [Linux `irw` Command Usage](https://manpages.ubuntu.com/manpages/bionic/man1/irw.1.html)
