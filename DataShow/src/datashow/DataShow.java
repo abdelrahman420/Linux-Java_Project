@@ -25,12 +25,7 @@ public class DataShow {
                 if (!line.equals(LastCommand)) {
                     LastCommand = line;
                     System.out.println(line);
-                    //mapping for my configuration
-//                    String action = config.getKeyValue(line);
-                    //case key not found 
-//                    if (action == null) {
-//                        action = line; //to prevent null the original key's action would be taken
-//                    }
+
                     if (line.contains("KEY_RIGHT")) {
                         action = config.getKeyValue("KEY_RIGHT");
 
@@ -96,7 +91,6 @@ public class DataShow {
                     }
                 }
             }
-//                Thread.sleep(3000);
 
         } catch (IOException e) {
         }
