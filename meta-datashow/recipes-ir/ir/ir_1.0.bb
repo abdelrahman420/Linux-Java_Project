@@ -36,15 +36,16 @@ FILES_${PN} = "${sysconfdir}/lirc/lircd.conf ${OVERLAY_PATH}/gpio-ir.dtbo"
 # Include both lircd.conf and gpio-ir.dtbo files
 SRC_URI = "file://lircd.conf \
            file://gpio-ir.dtbo \
-           file://boot/config.txt"
+           file://boot/config.txt \
+		   file://lirc_options.conf \
+		   "
 
 
 # The do_install function defines what happens during the installation phase
 do_install() {
     # Creates the /etc/lirc directory in the root filesystem of the target image
+	# Copies the custom lircd.conf file to the /etc/lirc directory
     install -d ${D}${sysconfdir}/lirc
-
-    # Copies the custom lircd.conf file to the /etc/lirc directory
     install -m 0644 lircd.conf ${D}${sysconfdir}/lirc
 
     # Install the overlay file to /boot/overlays
@@ -54,4 +55,7 @@ do_install() {
     # Install the provided config.txt to /boot
     install -d ${D}${BOOT_PATH}
     install -m 0644 config.txt ${D}${BOOT_PATH}/config.txt
+	
+	# Install lirc_options.conf to /etc/lirc
+    install -m 0644 lirc_options.conf ${D}${sysconfdir}/lirc/lirc_options.conf
 }
