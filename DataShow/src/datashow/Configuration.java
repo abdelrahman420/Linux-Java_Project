@@ -18,8 +18,6 @@ import java.util.Map;
 
 public class Configuration {
 
-    private static boolean mousePressed = false;
-
     private Map<String, Action> keyValues;
 
     public Configuration() {
@@ -30,13 +28,9 @@ public class Configuration {
         keyValues.put(key, value);
     }
 
-    //to take key and return value 
+    // to take key and return value
     public Action getKeyValue(String key) {
         return keyValues.get(key);
-    }
-
-    public static void setMousePressed(boolean status) {
-        mousePressed = status;
     }
 
     public void writeToFile(String fileName) {
@@ -53,13 +47,13 @@ public class Configuration {
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                //"KEY: VALUE"
+                // "KEY: VALUE"
                 String[] parts = line.split(":");
                 if (parts.length == 2) {
                     String key = parts[0].trim();
                     String value = parts[1].trim();
 
-                    //setKeyValue(key, value);/************start storing**************/
+                    /************ start storing **************/
                     switch (value) {
                         case "MOUSE_RIGHT":
                             Action mouse_right = new Mouse_Right();
