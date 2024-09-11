@@ -138,13 +138,13 @@ class Toggle_Presentation extends Action {
             robot.keyPress(KeyEvent.VK_F5);
             robot.delay(10);
             robot.keyRelease(KeyEvent.VK_F5);
-//                        Thread.sleep(500);
+
             presenting = true;
         } else {
             robot.keyPress(KeyEvent.VK_ESCAPE);
             robot.delay(10);
             robot.keyRelease(KeyEvent.VK_ESCAPE);
-//                        Thread.sleep(500);
+
             presenting = false;
         }
         holding = false;
@@ -195,13 +195,6 @@ class Toggle_Hold extends Action {
             robot.delay(5);
             holding = false;
         }
-    }
-}
-
-class Close extends Action {
-
-    @Override
-    public void perform() {
     }
 }
 

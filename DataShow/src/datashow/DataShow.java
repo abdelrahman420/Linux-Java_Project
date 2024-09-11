@@ -92,6 +92,7 @@ public class DataShow {
             }
 
         } catch (IOException e) {
+            System.out.println("An error occurred while parsing irw readings: " + e.getMessage());
         }
     }
 }
