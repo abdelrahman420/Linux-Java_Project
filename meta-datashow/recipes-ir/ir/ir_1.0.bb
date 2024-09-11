@@ -8,7 +8,6 @@ DESCRIPTION = "This recipe installs and configures LIRC, which allows you to use
 LICENSE = "CLOSED"
 
 # This appends the 'lirc' package to IMAGE_INSTALL, ensuring it is included in the image
-IMAGE_INSTALL:append = " lirc"
 
 # This adds 'lirc' to MACHINE_FEATURES to indicate that the machine supports LIRC
 MACHINE_FEATURES:append = " lirc"
