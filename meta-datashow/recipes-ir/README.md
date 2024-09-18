@@ -78,7 +78,8 @@ recipes-ir/
 │   ├── files
 │   │   ├── config.txt
 │   │   ├── gpio-ir.dtbo
-│   │   └── lircd.conf
+│   │   ├── lircd.conf
+|   |   └── lirc_options.conf   
 │   └── ir_1.0.bb
 └── lirc
     └── lirc_%.bbappend
