@@ -1,6 +1,5 @@
-//package datashow;
+package pkgdatashow;
 
-//import datashow.Configuration;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
