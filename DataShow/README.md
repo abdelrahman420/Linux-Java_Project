@@ -1,4 +1,4 @@
-# README - DataShow Remote Control Application
+# DataShow Remote Control Application
 
 ## Project Overview
 
